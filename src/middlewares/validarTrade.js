@@ -2,6 +2,7 @@ import { db } from "../dbWallet/mongo.js";
 import { trade } from "../schemas/trade.js";
 
 
+
 export async function validarTrade(req, res, next){
     
     const validate = trade.validate(req.body);
