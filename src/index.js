@@ -12,6 +12,6 @@ server.use(tradeRouter);
 
 const PORT = process.env.PORT || 5000;
 
-server.listen(5000, () => {
+server.listen(PORT, () => {
   console.log("RODANDO SERVER!!");
 });
