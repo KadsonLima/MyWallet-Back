@@ -9,7 +9,6 @@ export async function Login(req, res){
     console.log("NAME E ID", name, _id);
     const token = uuid();
 
-    console.log(token)
     await db.collection("session").deleteOne({_id});
     await db.collection("session").insertOne({name, _id, token});
 

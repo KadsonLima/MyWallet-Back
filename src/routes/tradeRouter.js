@@ -7,7 +7,7 @@ import { validarToken } from '../middlewares/validarToken.js';
 
 const router = Router();
 
-router.post("/trade",validarTrade, Trade);
+router.post("/trade",validarToken, validarTrade, Trade);
 
 router.get("/home",validarToken, Home);
 

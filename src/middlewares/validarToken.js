@@ -1,11 +1,16 @@
-import { db } from "../dbWallet/mongo.js";
+import { db , objectid} from "../dbWallet/mongo.js";
 
 
 export async function validarToken(req, res, next){
-    const {token, _id} = req.headers
-
-    console.log("Token e id", token, _id);
+    const {authorization, id} = req.headers
+    if(!authorization || !id) return res.sendStatus(401)
+    const token = authorization.replace("Bearer ", '');
     
+    const verifyUser = await db.collection("session").findOne(objectid(id));
+
+    if(verifyUser.token !== token){
+        return res.sendStatus(401);
+    }
 
     //res.locals.user = user;
     next();

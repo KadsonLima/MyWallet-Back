@@ -3,15 +3,20 @@ import { db } from '../dbWallet/mongo.js';
 
 
 export async function Home(req, res){
-
-    //const verificarEmail = await db.collection("trade").findOne({email})
-   
+    const {id} = req.headers;
+    
+    const getBdUser = await db.collection("trade").find({'_id':id}).toArray();
+    console.log(getBdUser)
     res.send("OK").status(200);
 }
 
 export async function Trade(req, res){
-    const { tipo, valor, descricao } = req.body;
-  
-    res.send("OK").status(200);
+    const {authorization, id} = req.headers;
+
+    console.log("id", id)
+    
+    const bancoUser = await db.collection("trade").updateOne({'_id': id }, {$push:{'trade':req.body}})
+
+    res.send(req.headers).status(200);
 }
 
