@@ -23,7 +23,7 @@ export const cadastro = joi.object({
 export const trade = joi.object({
     tipo:  joi.number().required(),
 
-    nome:  joi.string().required(),
+    descricao:  joi.string().required(),
     
     valor: joi.number().required()
 
