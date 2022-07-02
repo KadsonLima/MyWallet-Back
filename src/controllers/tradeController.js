@@ -6,8 +6,8 @@ export async function Home(req, res){
     const {id} = req.headers;
     
     const getBdUser = await db.collection("trade").find({'_id':id}).toArray();
-    console.log(getBdUser)
-    res.send("OK").status(200);
+
+    res.send(getBdUser).status(200);
 }
 
 export async function Trade(req, res){
