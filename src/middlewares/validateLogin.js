@@ -1,5 +1,5 @@
 import { db , objectid} from "../dbWallet/mongo.js";
-import { login } from "../schemas/joi.js";
+import { login } from "../schemas/login.js";
 import bcrypt from 'bcrypt';
 
 

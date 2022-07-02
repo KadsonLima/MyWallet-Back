@@ -1,5 +1,5 @@
 import { db } from "../dbWallet/mongo.js";
-import { cadastro } from "../schemas/joi.js";
+import { cadastro } from "../schemas/cadastro.js";
 
 
 export async function validateCadastro(req, res, next){

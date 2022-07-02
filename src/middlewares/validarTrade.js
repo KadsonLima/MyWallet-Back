@@ -1,5 +1,5 @@
 import { db } from "../dbWallet/mongo.js";
-import { trade } from "../schemas/joi.js";
+import { trade } from "../schemas/trade.js";
 
 
 export async function validarTrade(req, res, next){

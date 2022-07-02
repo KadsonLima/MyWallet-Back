@@ -13,7 +13,7 @@ export async function Login(req, res){
     await db.collection("session").deleteOne({_id});
     await db.collection("session").insertOne({name, _id, token});
 
-    res.status(200).send(token);
+    res.status(200).send({token, _id, name});
 }
 
 export async function Cadastro(req, res){
