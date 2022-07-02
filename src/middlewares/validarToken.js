@@ -7,6 +7,6 @@ export async function validarToken(req, res, next){
     console.log("Token e id", token, _id);
     
 
-    res.locals.user = user;
+    //res.locals.user = user;
     next();
 }
