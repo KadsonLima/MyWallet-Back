@@ -6,8 +6,18 @@ export async function Home(req, res){
     const {id} = req.headers;
     
     const getBdUser = await db.collection("trade").find({'_id':id}).toArray();
-    console.log(getBdUser)
-    res.send(getBdUser).status(200);
+
+    let saldo = 0;
+    getBdUser[0].trade.forEach(e =>{
+        if(e.tipo === 0){
+            saldo += parseFloat(e.valor)
+        }else{
+            saldo -= parseFloat(e.valor)
+
+        }
+    })
+    console.log(saldo)
+    res.send({getBdUser, saldo}).status(200);
 }
 
 export async function Trade(req, res){
