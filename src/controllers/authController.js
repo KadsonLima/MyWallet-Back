@@ -18,6 +18,12 @@ export async function Login(req, res){
 export async function Cadastro(req, res){
     const {name, email, password} = res.locals.user;
 
+    const verificarEmail = await db.collection("users").findOne({email})
+    
+    if(verificarEmail){
+        return res.sendStatus(403);
+    }
+
     const passwordCrypt = bcrypt.hashSync(password, 10);
 
     await db.collection("users").insertOne({name, email, password:passwordCrypt});
